@@ -1,4 +1,5 @@
-## based on jonathan's official theme
+## based on jonathan's
+
 
 functions rbenv_prompt_info >& /dev/null || rbenv_prompt_info(){}
 
@@ -93,24 +94,7 @@ setprompt () {
         PR_LLCORNER='$PR_SHIFT_IN${altchar[m]:--}$PR_SHIFT_OUT'
         PR_LRCORNER='$PR_SHIFT_IN${altchar[j]:--}$PR_SHIFT_OUT'
         PR_URCORNER='$PR_SHIFT_IN${altchar[k]:--}$PR_SHIFT_OUT'
-     fi
-
-
-    ###
-    # Decide if we need to set titlebar text.
-
-    case $TERM in
-    xterm*)
-        PR_TITLEBAR=$'%{\e]0;%(!.-=*[ROOT]*=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\a%}'
-        ;;
-    screen)
-        PR_TITLEBAR=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%n@%m:%~ | ${COLUMNS}x${LINES} | %y\e\\%}'
-        ;;
-    *)
-        PR_TITLEBAR=''
-        ;;
-    esac
-
+    fi
 
     ###
     # Decide whether to set a screen title
@@ -131,10 +115,10 @@ $PR_GREY)`rvm_prompt_info || rbenv_prompt_info`$PR_GREY$PR_HBAR$PR_HBAR${(e)PR_F
 $PR_CYAN%(!.%SROOT%s.%n)$PR_GREY\
 $PR_GREY)$PR_GREY$PR_HBAR$PR_URCORNER\
 
-$PR_GREY$PR_LLCORNER$PR_BLUE$PR_HBAR(\
+$PR_GREY$PR_LLCORNER$PR_GREY$PR_HBAR(\
 $PR_GREY%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_GREY)$PR_HBAR\
-$PR_HBAR\
->$PR_NO_COLOUR '
+$PR_HBAR$PR_YELLOW➤\
+$PR_NO_COLOUR '
 
     # display exitcode on the right when >0
     return_code="%(?..%{$fg[red]%}%? ↵ %{$reset_color%})"
